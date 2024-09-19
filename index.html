@@ -18,7 +18,7 @@
             <div class="playerContainer" id="centerContainer">Center</div>
         </div>
         <h1>NBA Player Search</h1>
-        <div class="searchContainer">
+        <form id="searchFrom" class="searchContainer">
             <select class="select" id="positionSearch">
                 <option value="PG">PG</option>
                 <option value="SG">SG</option>
@@ -29,8 +29,8 @@
             <input class="range" type="range" id="pointsSearch" min="0" max="20000" value="0">
             <input class="range" type="range" id="3Search" min="0" max="100" value="0">
             <input class="range" type="range" id="2Search" min="0" max="100" value="0">
-            <button id="searchButton">Search Player</button>
-        </div>
+            <button  id="searchButton">Search Player</button>
+        </form>
         <table id="playerTable">
             <thead >
                 <tr>
@@ -39,6 +39,7 @@
                     <th>Points</th>
                     <th>3P%</th>
                     <th>2P%</th>
+                    <th>actions</th>
                 </tr>
             </thead>
             <tbody id="playerTableBody">
