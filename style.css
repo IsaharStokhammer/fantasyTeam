@@ -24,9 +24,12 @@ button {
     max-width: 200px;
 
 }
+td:hover{
+    background-color: #6a59a1;
+}
 
 button:hover {
-    background-color: #6a59a1;
+    background-color: #b1a9c9;
 }
 
 .head {
@@ -37,6 +40,7 @@ button:hover {
     background-color: #322950;
     color: white;
     position: fixed;
+    top: 0;
     left: 0;
     right: 0;
     margin-bottom: 2%;
@@ -68,6 +72,9 @@ button:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
     color: rgb(5, 55, 19);
+}
+.playerContainer:hover{
+    background-color: #ccc0d1;
 }
 
 
