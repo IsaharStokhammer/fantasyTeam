@@ -11,24 +11,29 @@
     <div class="container">
         <h1>My fantasy Team</h1>
         <div class="teamView">
-            <div class="playerContainer" id="pointGuardContainer"></div>
-            <div class="playerContainer" id="shootingGuardContainer"></div>
-            <div class="playerContainer" id="smallForwardContainer"></div>
-            <div class="playerContainer" id="powerForwardContainer"></div>
-            <div class="playerContainer" id="centerContainer"></div>
+            <div class="playerContainer" id="pointGuardContainer">
+                Point Guard
+                <!-- <div class="playerView">
+                    <div id="player detailes"></div> -->
+                <!-- </div> -->
+            </div>
+            <div class="playerContainer" id="shootingGuardContainer">Shooting Guard</div>
+            <div class="playerContainer" id="smallForwardContainer">Small Forward</div>
+            <div class="playerContainer" id="powerForwardContainer">Power Forward</div>
+            <div class="playerContainer" id="centerContainer">Center</div>
         </div>
         <h1>NBA Player Search</h1>
         <div class="searchContainer">
-            <select id="positionSearch">
+            <select class="select" id="positionSearch">
                 <option value="PG">PG</option>
                 <option value="SG">SG</option>
                 <option value="SF">SF</option>
                 <option value="PF">PF</option>
                 <option value="C">C</option>
             </select>
-            <input type="range" id="pointsSearch" min="0" max="20000">
-            <input type="range" id="3Search" min="0" max="100">
-            <input type="range" id="2Search" min="0" max="100">
+            <input class="range" type="range" id="pointsSearch" min="0" max="20000">
+            <input class="range" type="range" id="3Search" min="0" max="100">
+            <input class="range" type="range" id="2Search" min="0" max="100">
             <button id="searchButton">Search Player</button>
         </div>
         <table id="playerTable">
