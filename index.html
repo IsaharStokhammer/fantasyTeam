@@ -33,6 +33,7 @@
                 <div id="centerContainer"></div>
             </div>
         </div>
+        <button id="saveTeamBtn">save team to DB</button>
         <h1>NBA Player Search</h1>
         <form id="searchFrom" class="searchContainer">
             <select class="select" id="positionSearch">
@@ -42,9 +43,19 @@
                 <option value="PF">PF</option>
                 <option value="C">C</option>
             </select>
-            <input class="range" type="range" id="pointsSearch" min="0" max="20000" value="0">
-            <input class="range" type="range" id="3Search" min="0" max="100" value="0">
-            <input class="range" type="range" id="2Search" min="0" max="100" value="0">
+            <div class="in-out">
+                <input class="range" type="range" id="pointsSearch" min="0" max="20000" value="0" oninput="this.nextElementSibling.value = this.value;">
+                <output name="result" class="label" for="pointsSearch"></output> 
+            </div>
+            <div class="in-out">
+                <input class="range" type="range" id="3Search" min="0" max="100" value="0" oninput="this.nextElementSibling.value = this.value;">
+                <output name="result" class="label" for="3Search"></output> 
+            </div>
+            <div class="in-out">
+                <input class="range" type="range" id="2Search" min="0" max="100" value="0" oninput="this.nextElementSibling.value = this.value;">
+                <output name="result" class="label" for="2Search"></output> 
+            </div>
+
             <button  id="searchButton">Search Player</button>
         </form>
         <table id="playerTable">

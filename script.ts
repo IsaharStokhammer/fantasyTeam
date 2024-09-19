@@ -3,8 +3,10 @@ const sootingGuardContainer = document.getElementById("shootingGuardContainer");
 const smallForwardContainer = document.getElementById("smallForwardContainer");
 const powerForwardContainer = document.getElementById("powerForwardContainer");
 const centerContainer = document.getElementById("centerContainer");
-
 const playerTableBody = document.getElementById("playerTableBody");
+
+const teams :object[]= [];
+let currentTeam : object[] = [];
 
 const searchFrom = document.getElementById("searchFrom");
 searchFrom!.addEventListener("submit",(e:Event)=>{
@@ -78,8 +80,6 @@ async function getPlayersToPlayersArr(request : object) {
     })
     .then(response => response.json())
     .then(data => playersArr.push(...data))
-    .then(() => console.log(`המידע נכנס למערך שחקנים`))
-    .then(() => console.log(playersArr))
     
     .catch(error => console.error('Error:', error));
 
@@ -88,28 +88,58 @@ async function getPlayersToPlayersArr(request : object) {
 function addPlayer(currentPlayer: player){
     const playerElement = document.createElement("div");
     playerElement.textContent = `${currentPlayer.playerName} - ${currentPlayer.position}\n ${currentPlayer.points}\n ${currentPlayer.threePercent}%\n ${currentPlayer.twoPercent}%`;
+    currentTeam = [];
     switch (currentPlayer.position) {
-        case "PG":
-            
+        
+        case "PG":            
             pointGuardContainer!.innerHTML = '';
             pointGuardContainer?.append(playerElement);
+            currentTeam.push(currentPlayer);
+            teams.push(currentTeam);
             break;
         case "SG":
             sootingGuardContainer!.innerHTML = '';
             sootingGuardContainer?.append(playerElement);
+            currentTeam.push(currentPlayer);
+            teams.push(currentTeam);
             break;
         case "SF":
             smallForwardContainer!.innerHTML = '';
             smallForwardContainer?.append(playerElement);
+            currentTeam.push(currentPlayer);
+            teams.push(currentTeam);
             break;
         case "PF":
             powerForwardContainer!.innerHTML = '';
             powerForwardContainer?.append(playerElement);
+            currentTeam.push(currentPlayer);
+            teams.push(currentTeam);
             break;
         case "C":
             centerContainer!.innerHTML = '';
             centerContainer?.append(playerElement);
+            currentTeam.push(currentPlayer);
+            teams.push(currentTeam);
             break;
     }
+
+}
+
+const saveTeamBtn = document.getElementById("saveTeamBtn") as HTMLButtonElement;
+saveTeamBtn?.addEventListener('click', saveTeamToDB);
+
+async function saveTeamToDB(){
+    const jsonObj = JSON.stringify(currentTeam)
+    await fetch('https://nbaserver-q21u.onrender.com/api/addTeam', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: `{players:[${jsonObj}]}`
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    
+    .catch(error => console.error('Error:', error));
 
 }
