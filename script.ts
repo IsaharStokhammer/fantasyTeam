@@ -101,7 +101,7 @@ async function getPlayersToPlayersArr(request : object) {
 function addPlayer(currentPlayer: player){
     const playerElement = document.createElement("div");
     const playerDetails = document.createElement("p");
-    playerDetails.innerText = `${currentPlayer.playerName} - ${currentPlayer.position}\n ${currentPlayer.points}\n ${currentPlayer.threePercent}%\n ${currentPlayer.twoPercent}%`;
+    playerDetails.innerText = `${currentPlayer.playerName} - ${currentPlayer.position}\n  points: ${currentPlayer.points}\n 3: ${currentPlayer.threePercent}%\n 2 :${currentPlayer.twoPercent}%`;
     playerElement.appendChild(playerDetails);
     currentTeam = [];
     switch (currentPlayer.position) {
