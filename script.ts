@@ -42,32 +42,43 @@ async function reloadTable() {
         points: +pointsSearch.value,
     });
     playersArr.forEach((currentPlayer : player)=> {
+        const newTr = createTableRow(currentPlayer);
+        playerTableBody?.appendChild(newTr);
+    })
+
+    function createTableRow(currentPlayer : player){
         const newTr = document.createElement("tr")
-        const nameTd = document.createElement("td");
-        nameTd.innerText = currentPlayer.playerName;
-        const positionTd = document.createElement("td");
-        positionTd.innerText = currentPlayer.position;
-        const pointsTd = document.createElement("td");
-        pointsTd.innerText = currentPlayer.points.toString();
-        const threePercentTd = document.createElement("td");
-        threePercentTd.innerText = currentPlayer.threePercent.toString();
-        const twoPercentTd = document.createElement("td");
-        twoPercentTd.innerText = currentPlayer.twoPercent.toString();
+        const nameTd = createTd(currentPlayer.playerName);
+        const positionTd = createTd(currentPlayer.position);
+        const pointsTd = createTd(currentPlayer.points.toString());
+        const threePercentTd = createTd(currentPlayer.threePercent.toString());
+        const twoPercentTd = createTd(currentPlayer.twoPercent.toString());
 
-        const addPlayerBtn = document.createElement("button");
-        addPlayerBtn.innerText = `add player ${currentPlayer.playerName} to current team`;
-        addPlayerBtn.addEventListener('click', () => {
-            addPlayer(currentPlayer);
-        });
-
+        const addPlayerBtn = createAddPlayerButton(currentPlayer);
         newTr.appendChild(nameTd);
         newTr.appendChild(positionTd);
         newTr.appendChild(pointsTd);
         newTr.appendChild(threePercentTd);
         newTr.appendChild(twoPercentTd);
         newTr.appendChild(addPlayerBtn);
-        playerTableBody?.appendChild(newTr);        
-    })
+        return newTr;
+    }
+
+    function createTd(text : string){
+        const td = document.createElement("td");
+        td.innerText = text;
+        return td;
+    }
+
+    function createAddPlayerButton(currentPlayer : player){
+        const addPlayerBtn = document.createElement("button");
+        const firstName = currentPlayer.playerName.split(" ")[0];
+        addPlayerBtn.innerText = `add player ${firstName} to current team`;
+        addPlayerBtn.addEventListener('click', () => {
+            addPlayer(currentPlayer);
+        });
+        return addPlayerBtn;
+    }
     playersArr = [];
 }
 
@@ -89,7 +100,9 @@ async function getPlayersToPlayersArr(request : object) {
 
 function addPlayer(currentPlayer: player){
     const playerElement = document.createElement("div");
-    playerElement.textContent = `${currentPlayer.playerName} - ${currentPlayer.position}\n ${currentPlayer.points}\n ${currentPlayer.threePercent}%\n ${currentPlayer.twoPercent}%`;
+    const playerDetails = document.createElement("p");
+    playerDetails.innerText = `${currentPlayer.playerName} - ${currentPlayer.position}\n ${currentPlayer.points}\n ${currentPlayer.threePercent}%\n ${currentPlayer.twoPercent}%`;
+    playerElement.appendChild(playerDetails);
     currentTeam = [];
     switch (currentPlayer.position) {
         
@@ -140,17 +153,13 @@ async function saveTeamToDB(){
         body: `{players:[${jsonObj}]}`
     })
     .then(response => response.json())
-    .then(data => console.log(data))
-    
+    .then(data => console.log(data))    
     .catch(error => console.error('Error:', error));
-
 }
 
 async function getAllTeams() {
     await fetch('https://nbaserver-q21u.onrender.com/api/GETAllTeams')
     .then(response => response.json())
-    .then(data => console.log(data))
-    
+    .then(data => console.log(data))    
     .catch(error => console.error('Error:', error));
-
 }
