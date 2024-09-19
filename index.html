@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>fantasy Team</title>
+</head>
+<body>
+    <div class="head">NBA Fantasy 2014-2024</div>
+    <div class="container">
+        <h1>My fantasy Team</h1>
+        <div class="teamView">
+            <div class="playerContainer" id="pointGuardContainer"></div>
+            <div class="playerContainer" id="shootingGuardContainer"></div>
+            <div class="playerContainer" id="smallForwardContainer"></div>
+            <div class="playerContainer" id="powerForwardContainer"></div>
+            <div class="playerContainer" id="centerContainer"></div>
+        </div>
+        <h1>NBA Player Search</h1>
+        <div class="searchContainer">
+            <select id="positionSearch">
+                <option value="PG">PG</option>
+                <option value="SG">SG</option>
+                <option value="SF">SF</option>
+                <option value="PF">PF</option>
+                <option value="C">C</option>
+            </select>
+            <input type="range" id="pointsSearch" min="0" max="20000">
+            <input type="range" id="3Search" min="0" max="100">
+            <input type="range" id="2Search" min="0" max="100">
+            <button id="searchButton">Search Player</button>
+        </div>
+        <table id="playerTable">
+            <thead >
+                <tr>
+                    <th>Player Name</th>
+                    <th>Position</th>
+                    <th>Points</th>
+                    <th>3P%</th>
+                    <th>2P%</th>
+                </tr>
+            </thead>
+            <tbody id="playerTableBody">
+            </tbody>
+        </table>
+    </div>
+    <script src="../script.js/script.js"></script>
+</body>
+</html>
