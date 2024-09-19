@@ -4,14 +4,16 @@ const smallForwardContainer = document.getElementById("smallForwardContainer");
 const powerForwardContainer = document.getElementById("powerForwardContainer");
 const centerContainer = document.getElementById("centerContainer");
 const playerTableBody = document.getElementById("playerTableBody");
+const searchFrom = document.getElementById("searchFrom");
+searchFrom!.addEventListener("submit",(e:Event)=>{
+    e.preventDefault();
+});
+const teamsContainer = document.getElementById("teamsContainer");
 
 const teams :object[]= [];
 let currentTeam : object[] = [];
 
-const searchFrom = document.getElementById("searchFrom");
-searchFrom!.addEventListener("submit",(e:Event)=>{
-    e.preventDefault();
-})
+
 const positionSearch = document.getElementById("positionSearch") as HTMLFormElement;
 const pointsSearch = document.getElementById("pointsSearch") as HTMLFormElement;
 const threeSearch = document.getElementById("3Search") as HTMLFormElement;
@@ -125,8 +127,8 @@ function addPlayer(currentPlayer: player){
 
 }
 
-const saveTeamBtn = document.getElementById("saveTeamBtn") as HTMLButtonElement;
-saveTeamBtn?.addEventListener('click', saveTeamToDB);
+const getAllPlayersBtn = document.getElementById("getAllPlayersBtn") as HTMLButtonElement;
+getAllPlayersBtn?.addEventListener('click', () => getAllTeams());
 
 async function saveTeamToDB(){
     const jsonObj = JSON.stringify(currentTeam)
@@ -137,6 +139,15 @@ async function saveTeamToDB(){
         },
         body: `{players:[${jsonObj}]}`
     })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    
+    .catch(error => console.error('Error:', error));
+
+}
+
+async function getAllTeams() {
+    await fetch('https://nbaserver-q21u.onrender.com/api/GETAllTeams')
     .then(response => response.json())
     .then(data => console.log(data))
     

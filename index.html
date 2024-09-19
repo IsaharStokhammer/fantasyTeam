@@ -11,6 +11,7 @@
         NBA Fantasy 2014-2024
     </div>
     <div class="container">
+        <button  id="getAllPlayersBtn">show all teams</button>
         <h1>My fantasy Team</h1>
         <div class="teamView">
             <div class="playerContainer">
@@ -33,7 +34,7 @@
                 <div id="centerContainer"></div>
             </div>
         </div>
-        <button id="saveTeamBtn">save team to DB</button>
+        <!-- <button id="saveTeamBtn">save team to DB</button> -->
         <h1>NBA Player Search</h1>
         <form id="searchFrom" class="searchContainer">
             <select class="select" id="positionSearch">
@@ -44,9 +45,9 @@
                 <option value="C">C</option>
             </select>
             <div class="in-out">
+            </div>
                 <input class="range" type="range" id="pointsSearch" min="0" max="20000" value="0" oninput="this.nextElementSibling.value = this.value;">
                 <output name="result" class="label" for="pointsSearch"></output> 
-            </div>
             <div class="in-out">
                 <input class="range" type="range" id="3Search" min="0" max="100" value="0" oninput="this.nextElementSibling.value = this.value;">
                 <output name="result" class="label" for="3Search"></output> 
@@ -72,6 +73,9 @@
             <tbody id="playerTableBody">
             </tbody>
         </table>
+    </div>
+    <div id="allTeamsContainer">
+
     </div>
     <script src="../script.js/script.js"></script>
 </body>
