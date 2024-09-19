@@ -19,7 +19,7 @@ const searchButton = document.getElementById("searchButton") as HTMLButtonElemen
 searchButton!.addEventListener('click', () => reloadTable());
 
 
-const playersArr : player[] = [];
+let playersArr : player[] = [];
 interface player {
     position: string,
     twoPercent: number,
@@ -28,14 +28,8 @@ interface player {
     playerName: string
 }
 
-// const request = {
-//     position: positionSearch.value,
-//     twoPercent: +twoSearch.value,
-//     threePercent: +threeSearch.value,
-//     points: +pointsSearch.value,
-// }
+
 async function reloadTable() {
-    debugger;
     playerTableBody!.innerHTML = "";
     await getPlayersToPlayersArr({
         position: positionSearch.value,
@@ -68,11 +62,9 @@ async function reloadTable() {
         newTr.appendChild(threePercentTd);
         newTr.appendChild(twoPercentTd);
         newTr.appendChild(addPlayerBtn);
-        playerTableBody?.appendChild(newTr);
-
-        
+        playerTableBody?.appendChild(newTr);        
     })
-    
+    playersArr = [];
 }
 
 async function getPlayersToPlayersArr(request : object) {   
