@@ -87,24 +87,28 @@ async function getPlayersToPlayersArr(request : object) {
 
 function addPlayer(currentPlayer: player){
     const playerElement = document.createElement("div");
-    playerElement.textContent = `point Guard \n ${currentPlayer.playerName} - ${currentPlayer.position}\n ${currentPlayer.points}\n ${currentPlayer.threePercent}%\n ${currentPlayer.twoPercent}%`;
+    playerElement.textContent = `${currentPlayer.playerName} - ${currentPlayer.position}\n ${currentPlayer.points}\n ${currentPlayer.threePercent}%\n ${currentPlayer.twoPercent}%`;
     switch (currentPlayer.position) {
         case "PG":
             
             pointGuardContainer!.innerHTML = '';
-            pointGuardContainer?.prepend(playerElement);
+            pointGuardContainer?.append(playerElement);
             break;
         case "SG":
-            sootingGuardContainer?.prepend(playerElement);
+            sootingGuardContainer!.innerHTML = '';
+            sootingGuardContainer?.append(playerElement);
             break;
         case "SF":
-            smallForwardContainer?.prepend(playerElement);
+            smallForwardContainer!.innerHTML = '';
+            smallForwardContainer?.append(playerElement);
             break;
         case "PF":
-            powerForwardContainer?.prepend(playerElement);
+            powerForwardContainer!.innerHTML = '';
+            powerForwardContainer?.append(playerElement);
             break;
         case "C":
-            centerContainer?.prepend(playerElement);
+            centerContainer!.innerHTML = '';
+            centerContainer?.append(playerElement);
             break;
     }
 

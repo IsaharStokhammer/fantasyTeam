@@ -5,6 +5,9 @@ body {
 h1{
     text-align: center;
 }
+h4{
+    color: #6a59a1;
+}
 button {
     background-color: #0d0527;
     color: white;
