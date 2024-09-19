@@ -69,7 +69,7 @@ async function reloadTable() {
 
 async function getPlayersToPlayersArr(request : object) {   
 
-    fetch('https://nbaserver-q21u.onrender.com/api/filter', {
+    await fetch('https://nbaserver-q21u.onrender.com/api/filter', {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json'
@@ -79,6 +79,8 @@ async function getPlayersToPlayersArr(request : object) {
     .then(response => response.json())
     .then(data => playersArr.push(...data))
     .then(() => console.log(`המידע נכנס למערך שחקנים`))
+    .then(() => console.log(playersArr))
+    
     .catch(error => console.error('Error:', error));
 
 }
